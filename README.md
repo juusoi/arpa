@@ -1,6 +1,6 @@
 # ARPA
 
-[![GitHub](https://img.shields.io/github/license/juusoi/arpa?style=plastic)](https://github.com/juusoi/arpa/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/juusoi/arpa?style=flat-square)](https://github.com/juusoi/arpa/blob/main/LICENSE)
 
 Web app for generating random teams (eventually)
 
