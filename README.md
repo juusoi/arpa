@@ -7,6 +7,7 @@ Web app for generating random teams (eventually)
 ## Idea
 
 This is a project for me to learn TS
+Monorepo with a web app and a server
 
 ## Key concept
 
