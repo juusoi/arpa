@@ -40,6 +40,6 @@ jobs:
           DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
         run: |
           doctl auth init --access-token $DIGITALOCEAN_ACCESS_TOKEN
-          doctl compute scp --recursive backend/dist juuso@asennusvelho.fi:/home/juuso/arpa/dist
+          doctl compute scp backend/dist juuso@asennusvelho.fi:/home/juuso/arpa/dist
           doctl compute scp backend/ecosystem.config.js juuso@asennusvelho.fi:/home/juuso/arpa/ecosystem.config.js
           doctl compute ssh juuso@asennusvelho.fi --command "pm2 restart your-app || pm2 start /juuso/arpa/ecosystem.config.js"
