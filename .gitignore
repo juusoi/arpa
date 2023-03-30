@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Build artifacts
+/dist/
+/public/
+*.log
+
+# Frontend build artifacts (React, Angular, or Vue.js)
+/build/
+/dist/
+/ng-build/
+
+# Environment variables and secrets
+.env
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Operating system files
+.DS_Store
+Thumbs.db

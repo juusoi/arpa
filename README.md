@@ -6,7 +6,7 @@ Web app for generating random teams (eventually)
 
 ## Idea
 
-This is a project for me to learn JS
+This is a project for me to learn TS
 
 ## Key concept
 
