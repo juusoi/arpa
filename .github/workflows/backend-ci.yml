@@ -1,0 +1,45 @@
+name: backend-CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: backend
+
+      - name: Run tests
+        run: npm test
+        working-directory: backend
+
+      - name: Build
+        run: npm run build
+        working-directory: backend
+
+      - name: Install doctl
+        run: |
+          sudo snap install doctl
+          echo "/snap/bin" >> $GITHUB_PATH
+
+      - name: Deploy to DigitalOcean Droplet
+        env:
+          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        run: |
+          doctl auth init --access-token $DIGITALOCEAN_ACCESS_TOKEN
+          doctl compute scp --recursive backend/dist juuso@asennusvelho.fi:/home/juuso/arpa/dist
+          doctl compute scp backend/ecosystem.config.js juuso@asennusvelho.fi:/home/juuso/arpa/ecosystem.config.js
+          doctl compute ssh juuso@asennusvelho.fi --command "pm2 restart your-app || pm2 start /juuso/arpa/ecosystem.config.js"
