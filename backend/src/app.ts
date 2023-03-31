@@ -13,7 +13,7 @@ app.post('/api/teams', (req: Request, res: Response, next: NextFunction) => {
   if (players.length < 2 || players.length > 10) {
     return next(new CustomError('Invalid number of players. Must be between 2 and 10.', 400));
   }
-  function shuffle(array: any[]) {
+  function shuffle(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
